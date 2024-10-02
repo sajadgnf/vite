@@ -1,50 +1,120 @@
-# React + TypeScript + Vite
+# **PWA Weather Tracker**
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+A Progressive Web App (PWA) built with **React**, **TypeScript**, and **Vite** for tracking real-time weather conditions. The app supports offline access, push notifications, and is installable on mobile and desktop devices for a native-like experience.
 
-Currently, two official plugins are available:
+## **Features**
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react/README.md) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+- **Real-time Weather Data**: Fetches live weather data using the [OpenWeatherMap API](https://openweathermap.org/api).
+- **Offline Support**: Works offline by caching API responses and static assets.
+- **Push Notifications**: Get weather alerts even when the app is closed.
+- **Installable**: Can be installed as a native app on mobile and desktop devices using PWA technology.
+- **Responsive Design**: Fully responsive UI using **Sass** for flexible styling.
 
-## Expanding the ESLint configuration
+## **Tech Stack**
 
-If you are developing a production application, we recommend updating the configuration to enable type aware lint rules:
+- **Vite**: A fast, modern build tool for frontend development.
+- **React**: JavaScript library for building user interfaces.
+- **TypeScript**: Type-safe development to reduce errors and enhance maintainability.
+- **Sass**: CSS preprocessor for cleaner and reusable styles.
+- **Vite PWA Plugin**: Easily configure PWA features like service workers, caching, and manifest generation.
 
-- Configure the top-level `parserOptions` property like this:
+---
 
-```js
-export default tseslint.config({
-  languageOptions: {
-    // other options...
-    parserOptions: {
-      project: ['./tsconfig.node.json', './tsconfig.app.json'],
-      tsconfigRootDir: import.meta.dirname,
-    },
-  },
-})
-```
+## **Getting Started**
 
-- Replace `tseslint.configs.recommended` to `tseslint.configs.recommendedTypeChecked` or `tseslint.configs.strictTypeChecked`
-- Optionally add `...tseslint.configs.stylisticTypeChecked`
-- Install [eslint-plugin-react](https://github.com/jsx-eslint/eslint-plugin-react) and update the config:
+To get a local copy of the project up and running, follow these steps.
 
-```js
-// eslint.config.js
-import react from 'eslint-plugin-react'
+### **Prerequisites**
 
-export default tseslint.config({
-  // Set the react version
-  settings: { react: { version: '18.3' } },
-  plugins: {
-    // Add the react plugin
-    react,
-  },
-  rules: {
-    // other rules...
-    // Enable its recommended rules
-    ...react.configs.recommended.rules,
-    ...react.configs['jsx-runtime'].rules,
-  },
-})
-```
+- **Node.js** (v14+)
+- **npm** (v7+)
+- **OpenWeatherMap API Key**: [Sign up here](https://openweathermap.org/api) to get an API key.
+
+### **Installation**
+
+1. **Clone the repository**:
+
+   ```bash
+   git clone https://github.com/ali-noori-dev/pwa-weather-tracker.git
+   cd pwa-weather-tracker
+   ```
+
+2. **Install dependencies**:
+
+   ```bash
+   npm install
+   ```
+
+3. **Set up environment variables**:
+
+   - Create a `.env` file in the root directory:
+     ```bash
+     touch .env
+     ```
+   - Add your **OpenWeatherMap API key** to the `.env` file:
+     ```bash
+     VITE_WEATHER_API_KEY=your_openweathermap_api_key
+     ```
+
+4. **Run the development server**:
+
+   ```bash
+   npm run dev
+   ```
+
+5. **Build for production**:
+   ```bash
+   npm run build
+   ```
+
+---
+
+## **Available Scripts**
+
+- `npm run dev`: Starts the development server with **HMR** (Hot Module Replacement).
+- `npm run build`: Bundles the app for production.
+- `npm run preview`: Previews the production build locally.
+- `npm run lint`: Lints the code using **ESLint**.
+
+---
+
+## **PWA Features**
+
+- **Service Worker**: Automatically generated and updated for offline support.
+- **Manifest File**: Provides metadata about the app, such as the name, icons, and theme color.
+- **Background Sync & Caching**: Leverages Workbox to cache API responses and static assets for improved offline performance.
+
+### **Testing PWA Features**
+
+1. Run the development server:
+
+   ```bash
+   npm run dev
+   ```
+
+2. Open the app in **Google Chrome**.
+3. Use **Chrome DevTools** (F12):
+   - Go to the **"Application"** tab.
+   - Check the **"Manifest"** and **"Service Worker"** sections to ensure the PWA is correctly set up.
+   - Use **Lighthouse** to audit your PWA for performance, accessibility, best practices, and SEO.
+
+---
+
+## **Contributing**
+
+Contributions are welcome! Please follow these steps:
+
+1. Fork the repository.
+2. Create a new branch (`git checkout -b feature/my-feature`).
+3. Commit your changes (`git commit -m 'Add my feature'`).
+4. Push to the branch (`git push origin feature/my-feature`).
+5. Open a Pull Request.
+
+---
+
+## **Acknowledgments**
+
+- [Vite](https://vitejs.dev/)
+- [React](https://reactjs.org/)
+- [OpenWeatherMap API](https://openweathermap.org/api)
+- [Vite PWA Plugin](https://vite-plugin-pwa.netlify.app/)
