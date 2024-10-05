@@ -1,0 +1,68 @@
+@use "./src/styles/_variables.scss";
+@use "./src/styles/_functions.scss";
+
+.autocomplete {
+  position: relative;
+  width: 100%;
+
+  &__input-wrapper {
+    display: flex;
+    align-items: center;
+    background-color: white;
+    border: 1px solid variables.$border-color;
+    border-radius: 4px;
+    padding: functions.spacing(4);
+  }
+
+  &__input {
+    width: 100%;
+    font-size: variables.$font-size-base;
+    outline: none;
+    border: none;
+  }
+
+  &__clear-icon {
+    cursor: pointer;
+    color: variables.$text-muted-color;
+    transition: color 0.2s ease;
+
+    &:hover {
+      color: variables.$text-color;
+    }
+  }
+
+  &__start-icon {
+    margin-right: functions.spacing(2);
+  }
+
+  &__suggestions {
+    border: 1px solid variables.$border-color;
+    max-height: 40vh;
+    overflow-y: auto;
+    list-style: none;
+    margin: 0;
+    padding: functions.spacing(2) 0;
+    background-color: white;
+    position: absolute;
+    width: 100%;
+    z-index: 100;
+  }
+
+  &__suggestion {
+    padding: functions.spacing(2) functions.spacing(4);
+    cursor: pointer;
+
+    &--highlighted {
+      background-color: variables.$background-hover-color;
+    }
+
+    &:hover {
+      background-color: variables.$background-hover-color;
+    }
+  }
+
+  &__no-options {
+    padding: functions.spacing(2) functions.spacing(4);
+    color: variables.$text-muted-color;
+  }
+}

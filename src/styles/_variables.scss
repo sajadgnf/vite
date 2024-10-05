@@ -1,11 +1,12 @@
 @use "functions";
 
 // Colors
-$primary-color: #3498db;
+$primary-color: #1976d2;
 $secondary-color: #2ecc71;
 $text-color: #333;
+$text-muted-color: #999;
 $border-color: #ccc;
-$background-hover-color: #f0f0f0;
+$background-hover-color: rgba(0, 0, 0, 0.04);
 
 // Fonts
 $font-family: "Roboto", sans-serif;
