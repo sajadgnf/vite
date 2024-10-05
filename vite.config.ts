@@ -69,7 +69,7 @@ export default defineConfig({
   css: {
     preprocessorOptions: {
       scss: {
-        additionalData: `@import './src/styles/_variables.scss';`, // Auto-import Sass variables globally
+        additionalData: `@use './src/styles/_variables.scss' as *;`, // Auto-import Sass variables globally
         silenceDeprecations: ["legacy-js-api"],
       },
     },
@@ -78,5 +78,8 @@ export default defineConfig({
     alias: {
       "@": "/src", // Set up alias for cleaner imports
     },
+  },
+  server: {
+    port: 5174,
   },
 });

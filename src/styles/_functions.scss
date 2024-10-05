@@ -1,0 +1,6 @@
+$spacing-unit: 0.25rem;
+
+// Function to convert scale value to rem-based spacing
+@function spacing($multiplier) {
+  @return $spacing-unit * $multiplier;
+}

@@ -1,8 +1,26 @@
-@import "variables";
-@import "reset";
+@use "reset";
+@use "variables";
+@use "functions";
 
 body {
-  color: $text-color;
-  font-family: $font-family;
-  font-size: $font-size-base;
+  color: variables.$text-color;
+  font-family: variables.$font-family;
+  font-size: variables.$font-size-base;
+}
+
+.app-main {
+  background-image: linear-gradient(
+      to left,
+      rgba(16, 40, 64, 0.4) 100%,
+      rgba(16, 40, 64, 0) 0%
+    ),
+    linear-gradient(rgba(16, 40, 64, 0.2), rgba(16, 40, 64, 0.2)),
+    linear-gradient(rgba(255, 255, 255, 0.2), rgba(255, 255, 255, 0.2)),
+    url("/images/background.jpg");
+
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  min-height: 100vh;
+  padding: functions.spacing(4);
 }
