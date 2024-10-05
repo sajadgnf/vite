@@ -92,14 +92,12 @@ const Autocomplete: React.FC<AutocompleteProps> = ({
 
   return (
     <div className="autocomplete" ref={autocompleteRef}>
-      <div className="autocomplete__input-wrapper">
+      <div
+        className="autocomplete__input-wrapper"
+        onClick={handleToggleDropdown}
+      >
         {startIcon && (
-          <span
-            className="autocomplete__start-icon"
-            onClick={handleToggleDropdown}
-          >
-            {startIcon}
-          </span>
+          <span className="autocomplete__start-icon">{startIcon}</span>
         )}
 
         <input
