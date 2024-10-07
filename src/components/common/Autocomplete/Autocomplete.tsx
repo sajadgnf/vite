@@ -1,6 +1,8 @@
 import React, { useEffect, useRef, useState } from "react";
 import { FiX } from "react-icons/fi";
+import Center from "../Center/Center";
 import Flex from "../Flex/Flex";
+import Spinner from "../Spinner/Spinner";
 import "./Autocomplete.scss";
 
 interface AutocompleteProps {
@@ -100,7 +102,7 @@ const Autocomplete: React.FC<AutocompleteProps> = ({
         onClick={handleToggleDropdown}
       >
         {startIcon && (
-          <span className="autocomplete__start-icon">{startIcon}</span>
+          <Center className="autocomplete__start-icon">{startIcon}</Center>
         )}
 
         <input
@@ -114,40 +116,42 @@ const Autocomplete: React.FC<AutocompleteProps> = ({
           onClick={handleToggleDropdown}
         />
 
+        {loading && <Spinner className="autocomplete__spinner" />}
+
         {inputValue && (
-          <FiX
-            size={20}
-            onClick={handleClearInput}
-            className="autocomplete__clear-icon"
-          />
+          <Center>
+            <FiX
+              size={20}
+              onClick={handleClearInput}
+              className="autocomplete__clear-icon"
+            />
+          </Center>
         )}
       </Flex>
 
-      {loading ? (
-        <div className="autocomplete__loading">Loading...</div>
-      ) : (
-        isDropdownOpen && (
-          <ul className="autocomplete__suggestions">
-            {filteredSuggestions.length > 0 ? (
-              filteredSuggestions.map((item, index) => (
-                <li
-                  key={item}
-                  onClick={() => handleSelectItem(item)}
-                  onMouseEnter={() => setHighlightedIndex(index)}
-                  className={`autocomplete__suggestion ${
-                    highlightedIndex === index
-                      ? "autocomplete__suggestion--highlighted"
-                      : ""
-                  }`}
-                >
-                  {item}
-                </li>
-              ))
-            ) : (
-              <li className="autocomplete__no-options">No options</li>
-            )}
-          </ul>
-        )
+      {isDropdownOpen && (
+        <ul className="autocomplete__suggestions">
+          {loading ? (
+            <li className="autocomplete__message">Loading...</li>
+          ) : filteredSuggestions.length > 0 ? (
+            filteredSuggestions.map((item, index) => (
+              <li
+                key={item}
+                onClick={() => handleSelectItem(item)}
+                onMouseEnter={() => setHighlightedIndex(index)}
+                className={`autocomplete__suggestion ${
+                  highlightedIndex === index
+                    ? "autocomplete__suggestion--highlighted"
+                    : ""
+                }`}
+              >
+                {item}
+              </li>
+            ))
+          ) : (
+            <li className="autocomplete__message">No options</li>
+          )}
+        </ul>
       )}
     </div>
   );

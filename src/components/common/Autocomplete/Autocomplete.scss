@@ -15,6 +15,7 @@
 
   &__input {
     width: 100%;
+    height: functions.spacing(6);
     font-size: variables.$font-size-base;
     outline: none;
     border: none;
@@ -60,8 +61,12 @@
     }
   }
 
-  &__no-options {
+  &__message {
     padding: functions.spacing(2) functions.spacing(4);
     color: variables.$text-muted-color;
+  }
+
+  &__spinner {
+    margin: 0 functions.spacing(2);
   }
 }
