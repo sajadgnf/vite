@@ -28,7 +28,6 @@ To get a local copy of the project up and running, follow these steps.
 
 - **Node.js** (v14+)
 - **npm** (v7+)
-- **OpenWeatherMap API Key**: [Sign up here](https://openweathermap.org/api) to get an API key.
 
 ### **Installation**
 
@@ -45,24 +44,13 @@ To get a local copy of the project up and running, follow these steps.
    npm install
    ```
 
-3. **Set up environment variables**:
-
-   - Create a `.env` file in the root directory:
-     ```bash
-     touch .env
-     ```
-   - Add your **OpenWeatherMap API key** to the `.env` file:
-     ```bash
-     VITE_WEATHER_API_KEY=your_openweathermap_api_key
-     ```
-
-4. **Run the development server**:
+3. **Run the development server**:
 
    ```bash
    npm run dev
    ```
 
-5. **Build for production**:
+4. **Build for production**:
    ```bash
    npm run build
    ```
