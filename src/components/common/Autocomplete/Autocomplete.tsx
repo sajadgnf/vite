@@ -1,5 +1,6 @@
 import React, { useEffect, useRef, useState } from "react";
 import { FiX } from "react-icons/fi";
+import Flex from "../Flex/Flex";
 import "./Autocomplete.scss";
 
 interface AutocompleteProps {
@@ -7,6 +8,7 @@ interface AutocompleteProps {
   onSelect: (selectedItem: string) => void;
   placeholder: string;
   startIcon?: React.ReactNode;
+  loading?: boolean;
 }
 
 const Autocomplete: React.FC<AutocompleteProps> = ({
@@ -14,6 +16,7 @@ const Autocomplete: React.FC<AutocompleteProps> = ({
   onSelect,
   placeholder,
   startIcon,
+  loading,
 }) => {
   const [inputValue, setInputValue] = useState<string>("");
   const [filteredSuggestions, setFilteredSuggestions] = useState<string[]>([]);
@@ -92,7 +95,7 @@ const Autocomplete: React.FC<AutocompleteProps> = ({
 
   return (
     <div className="autocomplete" ref={autocompleteRef}>
-      <div
+      <Flex
         className="autocomplete__input-wrapper"
         onClick={handleToggleDropdown}
       >
@@ -118,29 +121,33 @@ const Autocomplete: React.FC<AutocompleteProps> = ({
             className="autocomplete__clear-icon"
           />
         )}
-      </div>
+      </Flex>
 
-      {isDropdownOpen && (
-        <ul className="autocomplete__suggestions">
-          {filteredSuggestions.length > 0 ? (
-            filteredSuggestions.map((item, index) => (
-              <li
-                key={item}
-                onClick={() => handleSelectItem(item)}
-                onMouseEnter={() => setHighlightedIndex(index)}
-                className={`autocomplete__suggestion ${
-                  highlightedIndex === index
-                    ? "autocomplete__suggestion--highlighted"
-                    : ""
-                }`}
-              >
-                {item}
-              </li>
-            ))
-          ) : (
-            <li className="autocomplete__no-options">No options</li>
-          )}
-        </ul>
+      {loading ? (
+        <div className="autocomplete__loading">Loading...</div>
+      ) : (
+        isDropdownOpen && (
+          <ul className="autocomplete__suggestions">
+            {filteredSuggestions.length > 0 ? (
+              filteredSuggestions.map((item, index) => (
+                <li
+                  key={item}
+                  onClick={() => handleSelectItem(item)}
+                  onMouseEnter={() => setHighlightedIndex(index)}
+                  className={`autocomplete__suggestion ${
+                    highlightedIndex === index
+                      ? "autocomplete__suggestion--highlighted"
+                      : ""
+                  }`}
+                >
+                  {item}
+                </li>
+              ))
+            ) : (
+              <li className="autocomplete__no-options">No options</li>
+            )}
+          </ul>
+        )
       )}
     </div>
   );

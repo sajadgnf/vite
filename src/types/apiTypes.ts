@@ -7,3 +7,10 @@ export interface ApiState<T> {
 export interface ApiErrorResponse {
   message: string;
 }
+
+export interface CitySuggestion {
+  name: string;
+  country: string;
+  lat: number;
+  lon: number;
+}
